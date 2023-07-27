@@ -5,5 +5,7 @@
 </head>
 <body>
     <h2>Start page</h2>
+<table>
+</table>
 </body>
 </html>
