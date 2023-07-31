@@ -1,3 +1,8 @@
-#BOM_title, #bom, #comp_span {
+#BOM_title, #bom  {
     text-align: center;
+}
+
+#comp_span {
+    text-align: center;
+    position: relative;
 }

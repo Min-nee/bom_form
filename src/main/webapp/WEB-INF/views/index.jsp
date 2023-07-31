@@ -41,9 +41,9 @@
 <body>
     <h2 id = "BOM_title">Bill of Materials</h2>
     <h4 id = "bom">BOM</h4>
-    <span id = "comp_span">
+    <div id = "comp_span">
     <input type = "text" size = "50" placeholder="(선택사항)회사명을 입력하세요" style = "align-content: center;text-align: center">
-    </span>
+    </div>
     <table style = "border : solid">
         <tr>
             <th>연번</th>
