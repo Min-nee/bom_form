@@ -3,7 +3,7 @@
 <head>
     <title>Creating BOM</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/index_css.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
@@ -22,27 +22,28 @@
             str += "	<td style='text-align:center;'><input type=\"text\"></td>";
             str += "	<td style='text-align:center;'><input type=\"text\"></td>";
             str += "	<td style='text-align:center;'>";
-            str += "		<div class=\"btn-group\">";
-            str += "			<button type='button' class='del_btn'>삭제</button>";
+            str += "		<div class=\"btn\">";
+            str += "			<button type='button' class='del_btn' onclick='del_btn(" + row_idx + ")'>삭제</button>";
             str += "		</div>";
             str += "	</td>";
             str += "</tr>";
 
-            $("#tbody_id:last").append(str);
+            $("#content:last").append(str);
         }
 
-        function del_btn() {
-
+        function del_btn(row_idx) {
+            $("tr").filter(function() {
+                return $(this).find("td:first-child").text() === row_idx.toString();
+            }).remove();
         }
     </script>
 </head>
 <body>
-    <h2 style = "text-align : center">Bill of Materials</h2>
-    <h4 style = "text-align : center">BOM</h4>
-    <span style = "text-align: center">
+    <h2 id = "BOM_title">Bill of Materials</h2>
+    <h4 id = "bom">BOM</h4>
+    <span id = "comp_span">
     <input type = "text" size = "50" placeholder="(선택사항)회사명을 입력하세요" style = "align-content: center;text-align: center">
     </span>
-    <button onclick="btn_add()">행 추가</button>
     <table style = "border : solid">
         <tr>
             <th>연번</th>
@@ -53,10 +54,11 @@
             <th>구매처</th>
             <th>증빙서류</th>
             <th>가격(선택)</th>
-            <th>삭제</th>
+            <th><button onclick="btn_add()">행 추가</button></th>
         </tr>
-        <tbody id="tbody_id">
+        <tbody id="content">
         </tbody>
     </table>
+
 </body>
 </html>
