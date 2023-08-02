@@ -24,7 +24,7 @@
             str += "	<td style='text-align:center;'><input type=\"text\"></td>";
             str += "	<td style='text-align:center;'>";
             str += "		<div class=\"btn\">";
-            str += "			<button type='button' class='del_btn' onclick='del_btn(" + row_idx + ")'>삭제</button>";
+            str += "			<button type='button' class='del_btn' onclick='del_btn(this)'>삭제</button>";
             str += "		</div>";
             str += "	</td>";
             str += "</tr>";
@@ -32,12 +32,10 @@
             $("#content:last").append(str);
         }
 
-        function del_btn(row_idx) {
-            $("tr").filter(function() {
-                return $(this).find("td:first-child").text() === row_idx.toString();
-            }).remove();
-
-        resetRowNumbers();
+        function del_btn(delButton) {
+            var row_idx = parseInt($(delButton).closest("tr").find(".row_idx").text());
+            $(delButton).closest("tr").remove();
+            resetRowNumbers();
         }
 
         function resetRowNumbers() {
@@ -46,14 +44,6 @@
                 $(this).find(".row_idx").text(index + 1);
             });
         }
-        document.getElementById('code').addEventListener('input', function (event) {
-            const input = event.target.value;
-            const filteredValue = input.replace(/[^0-9.-]/g, ' ').replace(/(\..*)\./g, '$1');
-            event.target.value = filteredValue;
-        });
-
-    </script>
-
     </script>
 </head>
 <body>
@@ -80,7 +70,7 @@
                 <td style='text-align:center' class="1">1</td>
                 <td style='text-align:center'><input type="text"></td>
                 <td style='text-align:center'>
-                    <input type="text" oninput="this.value = this.value.replace(/[^0-9.-]/g, '').replace(/(\..*)\./g, '$1');" />
+                    <input type="text" oninput="this.value = this.value.replace(/[^0-9\.\-]/g, '');" />
                 </td>
                 <td style='text-align:center'><input type="text"></td>
                 <td style='text-align:center'><input type="text"></td>
