@@ -51,6 +51,7 @@
     <h4 id = "bom">BOM</h4>
     <div id = "comp_span">
     <input type = "text" size = "50" placeholder="(선택사항)회사명을 입력하세요" style = "align-content: center;text-align: center">
+        <a href = "csvtest">CSV테스트페이지</a>
     </div>
     <br>
     <table style = "border : solid">
