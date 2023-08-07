@@ -7,6 +7,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+    <script type="text/javascript">
+        function openPopup(url) {
+            window.open(url, "Popup", "width=600, height=400");
+        }
+    </script>
+
     <script>
         function btn_add(){
             var row_idx = parseInt($(".row_idx:last").text()) + 1;
@@ -51,14 +57,14 @@
     <h4 id = "bom">BOM</h4>
     <div id = "comp_span">
     <input type = "text" size = "50" placeholder="(선택사항)회사명을 입력하세요" style = "align-content: center;text-align: center">
-        <a href = "csvtest">CSV테스트페이지</a>
+
     </div>
     <br>
     <table style = "border : solid">
         <tr>
             <th>연번</th>
             <th>품명</th>
-            <th>HS코드</th>
+            <th>HS코드 <button onclick="openPopup('csvtest')">HScode 검색</button> </th>
             <th>원산지</th>
             <th>원산지 결정기준(선택)</th>
             <th>구매처</th>

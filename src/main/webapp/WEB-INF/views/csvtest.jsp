@@ -1,11 +1,10 @@
 <%@ page contentType ="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>CSV 파일에서 값 검색하기</title>
+  <title>HScode 검색</title>
 </head>
 <body>
-<a href = "index">홈으로</a>
-<h1>CSV 파일에서 값 검색하기</h1>
+<h1>HScode 검색</h1>
 <label for="searchInput">검색어:</label>
 <input type="text" id="searchInput">
 <button onclick="searchValue()">검색</button>
@@ -32,9 +31,9 @@
 
           for (let line of lines) {
             const values = line.split(',');
-            const targetValue = values[1]; // 원하는 값이 첫 번째 열에 있다고 가정
+            const targetValue = values[1]; // 6단위 검색
 
-            if (targetValue.includes(searchKeyword)) {
+            if (targetValue.startsWith(searchKeyword)) {
               matchingValues.push(values.join(', '));
             }
           }
@@ -58,5 +57,7 @@
     xhr.send();
   }
 </script>
+
+
 </body>
 </html>
