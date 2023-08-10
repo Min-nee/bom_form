@@ -37,7 +37,7 @@
           for (let line of lines) {
             const values = line.split(',');
             const targetValue1 = values[1].trim(); // HScode(2~6단위)
-            const targetValue2 = values[4].trim(); // 품명
+            const targetValue2 = values[3].trim(); // 품명
 
             if (targetValue1.startsWith(searchKeyword1) && targetValue2.includes(searchKeyword2)) {
               matchingValues.push(values.join(', '));
@@ -67,12 +67,57 @@
       }
     };
 
-
-
     xhr.open('GET', csvFilePath, true);
     xhr.send();
   }
 </script>
+
+<!-- getcsv 2nd ver -->
+<script>
+  function getCSV() {
+    $("#content").empty();
+    $.ajax({
+      url : "/chapter25_ajax/csv.do",	 	// 읽어올 정보(경로)
+      dataType : "text",					// 읽을 정보의 타입
+      type : "post", 						// 읽을 방식
+      success : function(data){			// 성공시 할 일(콜백)
+
+        var csvs = data.split(",");
+        var member = null;
+        var result = '';
+
+        for(var i=0; i<csvs.length; i++) {
+          member = csvs[i].split(",");
+          result += "<tr>";
+          for(var j=0; j<member.length; j++) {
+            result += "<td>" + member[j] + "</td>";
+          }
+          result += "</tr>";
+        }
+
+        $("#content").append(result);
+        $("#typeCheck").text("CSV 가져오기");
+
+      },
+      error : function(){// 에러 발생 시 할 일(콜백)
+        alert("실패!");
+      }
+    });
+  }
+</script>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>HScode(10단위)</th>
+    <th>HScode(6단위)</th>
+    <th>대분류</th>
+    <th>상세품명</th>
+  </tr>
+  </thead>
+  <tbody id="content">
+  </tbody>
+</table>
 
 </body>
 </html>

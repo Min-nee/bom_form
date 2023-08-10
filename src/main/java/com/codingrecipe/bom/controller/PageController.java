@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.Mapping;
 @Controller
 public class PageController {
 
-    @GetMapping("/csvtest")
-    public String csvtest() {
-        return "csvtest";
+    @GetMapping("/codeSearch")
+    public String codeSearch() {
+        return "codeSearch";
     }
+
 }

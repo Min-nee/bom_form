@@ -64,7 +64,7 @@
         <tr>
             <th>연번</th>
             <th>품명</th>
-            <th>HS코드 <button onclick="openPopup('csvtest')">HScode 검색</button> </th>
+            <th>HS코드 <button onclick="openPopup('codeSearch')">HScode 검색</button> </th>
             <th>원산지</th>
             <th>원산지 결정기준(선택)</th>
             <th>구매처</th>
